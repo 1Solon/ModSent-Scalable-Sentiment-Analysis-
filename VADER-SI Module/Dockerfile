@@ -3,7 +3,7 @@ FROM python:latest
 WORKDIR /vaderSI
 
 # Install requirements from file
-COPY ./requirements.txt /vaderSI/
+COPY ./requirements.txt /vaderSI
 RUN pip install -r requirements.txt
 
 COPY . .
