@@ -15,3 +15,6 @@ def sentimentIntensity():
     sentimentDictionary = jsonify(vader.polarity_scores(str(request.args)))
 
     return sentimentDictionary
+
+if __name__ == "__main__":
+    app.run(debug=True)
