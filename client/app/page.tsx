@@ -21,6 +21,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listitems';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Card from '@mui/material/Card';
 
 function Copyright(props: any) {
   return (
@@ -168,27 +171,49 @@ function DashboardContent() {
             <Grid container spacing={3}>
 
 
+              <Grid item>
+                <Box
+                  component="form"
+                  sx={{
+                    '& .MuiTextField-root': { m: 1, width: '600px' },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <div>
+                    <TextField
+                      id="outlined-multiline-static"
+                      label="Multiline"
+                      multiline
+                      minRows={25}
+                      variant="filled"
+                    />
+                  </div>
+                </Box>
+              </Grid>
 
-              <Box
-                component="form"
-                sx={{
-                  '& .MuiTextField-root': { m: 1, width: '600px' },
-                }}
-                noValidate
-                autoComplete="off"
-              >
-                <div>
-                  <TextField
-                    id="outlined-multiline-static"
-                    label="Multiline"
-                    multiline
-                    minRows={25}
-                    variant="filled"
-                  />
-                </div>
-              </Box>
-
+              <Grid item>
+                <Card sx={{ maxWidth: "450px" }}>
+                  <CardContent>
+                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                      Word of the Day
+                    </Typography>
+                    <Typography variant="h5" component="div">
+                      test
+                    </Typography>
+                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                      adjective
+                    </Typography>
+                    <Typography variant="body2">
+                      well meaning and kindly.
+                      <br />
+                      {'"a benevolent smile"'}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
             </Grid>
+
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
