@@ -1,1 +1,3 @@
-__pycache__/
+/__pycache__
+vaderSI/vader_library/vaderSentiment/__pycache__/vaderSentiment.cpython-311.pyc
+vaderSI/vader_library/vaderSentiment/__pycache__/__init__.cpython-311.pyc
