@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useState } from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -24,19 +25,24 @@ import { mainListItems, secondaryListItems } from './listitems';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
+import axios from 'axios';
+import { stringify } from 'querystring';
+
+
 
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      {'TBC '}
+      <Link color="inherit" href="https://github.com/1Solon/">
+        TBD
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
 }
+
 
 const drawerWidth: number = 240;
 
@@ -89,12 +95,20 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const mdTheme = createTheme();
+let vaderResp: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | null | undefined;
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  function userInput(value: string): void {
+    axios.get('http://localhost:3100/vader?=' + value).then(response => {
+      vaderResp = stringify(response.data)
+      console.log(response.data)
+    });
+  }
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -187,6 +201,7 @@ function DashboardContent() {
                       multiline
                       minRows={25}
                       variant="filled"
+                      onChange={(e) => userInput(e.target.value)}
                     />
                   </div>
                 </Box>
@@ -205,9 +220,7 @@ function DashboardContent() {
                       adjective
                     </Typography>
                     <Typography variant="body2">
-                      well meaning and kindly.
-                      <br />
-                      {'"a benevolent smile"'}
+                      {vaderResp}
                     </Typography>
                   </CardContent>
                 </Card>
