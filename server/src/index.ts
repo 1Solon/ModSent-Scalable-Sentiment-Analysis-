@@ -10,7 +10,7 @@ app.listen(port, () => {
 });
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:5173',
 }))
 
 const vaderSI = (request: Request, response: Response) => {
@@ -20,8 +20,10 @@ const vaderSI = (request: Request, response: Response) => {
         request.originalUrl.split("%20").join(" ")
     )
     .then((vader_response) => {
+      response.set('Access-Control-Allow-Origin', '*')
       response.status(200).send(vader_response.data);
     });
+
 };
 
 app.get("/vader", vaderSI);

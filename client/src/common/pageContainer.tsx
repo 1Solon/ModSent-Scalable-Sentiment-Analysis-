@@ -11,30 +11,15 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listitems';
 
 
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'TBC '}
-      <Link color="inherit" href="https://github.com/1Solon/">
-        TBD
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 type Props = {
   children: React.ReactNode;
 };
-
 
 const drawerWidth: number = 240;
 
@@ -88,15 +73,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const mdTheme = createTheme();
 
-function DashboardContent(props: Props) {
+export default function pageContainer(props: Props) {
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
-  function userInput(value: string): void {
-    // Not implemented pending rewrite
-  }
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -114,7 +95,7 @@ function DashboardContent(props: Props) {
               aria-label="open drawer"
               onClick={toggleDrawer}
               sx={{
-                marginRight: '6px',
+                marginRight: '0px',
                 ...(open && { display: 'none' }),
               }}
             >
@@ -170,15 +151,11 @@ function DashboardContent(props: Props) {
         >
           <Toolbar />
           <Container>
-            {props.children}
+            <br />
+              {props.children}
           </Container>
         </Box>
       </Box>
     </ThemeProvider>
   );
-}
-
-export default function Dashboard() {
-  // eslint-disable-next-line react/no-children-prop
-  return <DashboardContent children={undefined}  />;
 }

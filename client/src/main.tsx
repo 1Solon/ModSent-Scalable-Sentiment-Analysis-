@@ -1,9 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './common/pageContainer'
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import VADERpage from "./pages/VADERpage";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<VADERpage /> } />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+root.render(<App />);
